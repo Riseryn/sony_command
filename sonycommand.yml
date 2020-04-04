@@ -1,0 +1,406 @@
+#####################################
+# Commands for monitor Sony Bravia # 
+#####################################
+
+
+#####################
+# Volume settings   #
+#####################
+
+  ############################################
+  # Set a value for the volume (0-100)       #
+  ##########################################{#
+  - name: "set-tv-volume"
+    signals:
+      - order: "set volume to {{ volume }}"
+    neurons:
+      - sony_command:
+           type: "audio"
+           method: "setAudioVolume"
+           params: '"volume": "{{ volume }}","ui" : "on","target" : "speaker"'
+
+  ############################################
+  # increases the volume by a certain amount #
+  ############################################
+
+  - name: "tv-volume-up"
+    signals:
+      - order: "raise the volume by {{ volume }}"
+    neurons:
+      - sony_command:
+           type: "audio"
+           method: "setAudioVolume"
+           params: '"volume": "+{{ volume }}","ui" : "on","target" : "speaker"'
+
+  ##########################################
+  # lower the volume by a certain amount   #
+  ##########################################
+
+  - name: "tv-volume-down"
+    signals:
+      - order: "lower the volume by {{ volume }}"
+    neurons:
+      - sony_command:
+           type: "audio"
+           method: "setAudioVolume"
+           params: '"volume": "-{{ volume }}","ui" : "on","target" : "speaker"'
+
+  ################
+  # Mute         #
+  ################
+
+  - name: "tv-mute-on"
+    signals:
+      - order: "mute"
+    neurons:
+      - sony_command:
+           type: "audio"
+           method: "setAudioMute"
+           params: '"status": true'
+
+  ################
+  # Unmute       #
+  ################
+
+  - name: "tv-mute-off"
+    signals:
+      - order: "unmute"
+    neurons:
+      - sony_command:
+           type: "audio"
+           method: "setAudioMute"
+           params: '"status": false'
+
+#######################
+# Power on/off TV     #
+#######################
+
+  ################
+  # Power on     #
+  ################
+
+
+  - name: "tv-on"
+    signals:
+      - order: "power on"
+    neurons:
+      - sony_command:
+           type: "system"
+           method: "setPowerStatus"
+           params: '"status": true'
+
+  ################
+  # Power off    #
+  ################
+
+
+  - name: "tv-off"
+    signals:
+      - order: "power off"
+    neurons:
+      - sony_command:
+           type: "system"
+           method: "setPowerStatus"
+           params: '"status": false'
+
+
+  ################
+  # TV App List  #
+  ################
+
+
+  - name: "tv-app-list"
+    signals:
+      - order: "get application list"
+    neurons:
+      - sony_command:
+           type: "appControl"
+           method: "getApplicationList"
+           params: "[]"
+
+  ####################
+  # TV command List  #
+  ####################
+
+
+  - name: "tv-command-list"
+    signals:
+      - order: "get command list"
+    neurons:
+      - sony_command:
+           type: "system"
+           method: "getRemoteControllerInfo"
+           params: "[]"
+
+################
+# Open TV App  #
+################
+
+  ####################
+  # Open youtube App #
+  ####################
+
+
+  - name: "open-youtube-app"
+    signals:
+      - order:  "open youtube"
+    neurons:
+      - sony_command:
+           type: "appControl"
+           method: "setActiveApp"
+           app: "YouTube"
+      
+  ####################
+  # Open kodi App    #
+  ####################
+
+
+  - name: "open-kodi-app"
+    signals:
+      - order: "open kodi"
+
+    neurons:
+      - sony_command:
+           type: "appControl"
+           method: "setActiveApp"
+           app: "Kodi"
+
+  ####################
+  # Open deezer App  #
+  ####################
+
+
+  - name: "open-deezer-app"
+    signals:
+      - order: "open deezer"
+
+    neurons:
+      - sony_command:
+           type: "appControl"
+           method: "setActiveApp"
+           app: "deezer"
+
+  ########################
+  # Open prime video App #
+  ########################
+
+
+  - name: "open-prime-video-app"
+    signals:
+      - order: "open prime vidéo"
+
+    neurons:
+      - sony_command:
+           type: "appControl"
+           method: "setActiveApp"
+           app: "Prime Video"
+
+  ########################
+  # Open molotov App     #
+  ########################
+
+
+  - name: "open-molotov-app"
+    signals:
+      - order: "open molotov"
+
+    neurons:
+      - sony_command:
+           type: "appControl"
+           method: "setActiveApp"
+           app: "Molotov"
+
+
+#########################  
+# Send IRCC by network  #
+#########################
+
+    #############
+    # Set pause #
+    #############
+    
+  - name: "tv-pause"
+    signals:
+      - order: 
+          text: "pause"
+          stt-correction:
+            - input: "unpause"
+              output: "pause"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "pause"
+
+    ########
+    # Back #
+    ########
+    
+  - name: "tv-back"
+    signals:
+      - order: "back"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "back"
+
+    ###########
+    # Confirm #
+    ###########
+    
+  - name: "tv-confirm"
+    signals:
+      - order: "confirm"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "confirm"
+
+    #####################
+    # Next page/channel #
+    #####################
+    
+  - name: "tv-ChannelUp"
+    signals:
+      - order: "next"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "ChannelUp"
+
+    ##########################
+    # Previous page/channel #
+    ##########################
+    
+  - name: "tv-ChannelDown"
+    signals:
+      - order: "previous"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "ChannelDown"
+
+    ###########
+    # TV Home #
+    ###########
+    
+  - name: "tv-Home"
+    signals:
+      - order: "Home"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "Home"
+
+    ###################
+    # Stop playing    #
+    ###################
+    
+  - name: "tv-stop"
+    signals:
+      - order: "stop playing"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "Stop"
+
+    ####################
+    # Cursor to right  #
+    ####################
+    
+  - name: "tv-cursor-right"
+    signals:
+      - order: "right {{ repeat }} time"
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "Right"
+           repeat: "{{ repeat }}"
+
+    ##################
+    # Cursor to left #
+    ##################
+    
+  - name: "tv-cursor-left"
+    signals:
+      - order: "left {{ repeat }} time"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "Left"
+           repeat: "{{ repeat }}"
+
+    ####################
+    #  Cursor down     #
+    ####################
+    
+  - name: "tv-cursor-Down"
+    signals:
+      - order: "down {{ repeat }} time"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "Down"
+           repeat: "{{ repeat }}"
+
+    ####################
+    # Précédent        #
+    ####################
+    
+  - name: "tv-cursor-Up"
+    signals:
+      - order: "up {{ repeat }} time"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "Up"
+           repeat: "{{ repeat }}"
+
+    ####################
+    # Fast forward     #
+    ####################
+    
+  - name: "tv-flashPlus"
+    signals:
+      - order: "fast forward "
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "FlashPlus"
+           
+    ####################
+    # Fast rewind      #
+    ####################
+    
+  - name: "tv-flashMinus"
+    signals:
+      - order: "fast rewind "
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "FlashMinus"
+
+    ####################
+    # Play             #
+    ####################
+    
+  - name: "tv-play"
+    signals:
+      - order: "play"
+      
+    neurons:
+      - sony_command:
+           type: "IRCC"
+           action: "Play"
+
