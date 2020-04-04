@@ -1,0 +1,13 @@
+---
+  name: "sony_command"
+  type: "neuron"
+  author: "Riseryn"
+
+  kalliope_supported_version:
+    - 0.6
+
+
+  tags:
+    - "sony"
+    - "bravia pro"
+    - "command"
