@@ -57,7 +57,7 @@ The two share commands but some commands are more convenient to use with Kalliop
         <td>app</td>
         <td>none</td>
         <td>string</td>
-        <td>The application to open. See belowformoreinformations.</td>
+        <td>The application to open. See below for more informations.</td>
    </tr>
    <tr> 
         <td>IP</td>
