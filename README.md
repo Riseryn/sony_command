@@ -51,7 +51,7 @@ The two share commands but some commands are more convenient to use with Kalliop
         <td>params</td>
         <td>none</td>
         <td>string</td>
-        <td>Parameters of the command. See belowformoreinformations.</td>
+        <td>Parameters of the command. See below for more informations.</td>
    </tr>
     <tr> 
         <td>app</td>
