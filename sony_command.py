@@ -98,7 +98,7 @@ class Sony_command(NeuronModule):
 
         # builds header 
         head = {'content-type': 'application/json','X-Auth-PSK': str(KEY)}
-        print("self.app= ",self.app)
+        #print("self.app= ",self.app)
         # builds data according to the parameters        
         dat='{"method": "'
         dat +=self.method
@@ -123,7 +123,7 @@ class Sony_command(NeuronModule):
             dat +='"version" : "1.2"}'
         else:
             dat +='"version" : "1.0"}'
-        print("Data= ",dat)
+        #print("Data= ",dat)
         return head,dat
 
     #   execute the request
