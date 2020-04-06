@@ -123,7 +123,7 @@ class Sony_command(NeuronModule):
             dat +='"version" : "1.2"}'
         else:
             dat +='"version" : "1.0"}'
-        #print("Data= ",dat)
+
         return head,dat
 
     #   execute the request
