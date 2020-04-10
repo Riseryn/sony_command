@@ -98,7 +98,7 @@ class Sony_command(NeuronModule):
 
         # builds header 
         head = {'content-type': 'application/json','X-Auth-PSK': str(KEY)}
-        #print("self.app= ",self.app)
+
         # builds data according to the parameters        
         dat='{"method": "'
         dat +=self.method
@@ -109,9 +109,11 @@ class Sony_command(NeuronModule):
             dat +='","id":55,"params": [{'
             
         if self.app is not None:
-            Uri = self.cfg.get('Apps', self.app)
-            print("Uri= ",Uri)
+            Uri = self.cfg.get('Apps', self.app)            
             dat +='"uri": "'+ Uri +'"'
+            
+        elif self.method == "setAudioVolume":
+            dat +='"volume": "'+self.volume+'",'+'"ui" : "'+self.ui+'",'+'"target" : "'+self.target+'"'
         else:    
             dat +=self.params
         
