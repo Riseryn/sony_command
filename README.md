@@ -234,5 +234,5 @@ and change for:
         headers = {
             'Content-Type': 'application/json',
             'User-Agent': 'python-kodi',
-            'X-Auth-PSK' : 'nora_tv_control_724'
+            'X-Auth-PSK' : 'your shared key'
         }        
