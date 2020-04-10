@@ -94,7 +94,7 @@ This synapses use the REST API
             - sony_command:
                type: "audio"
                method: "setAudioVolume"
-               volume: "+{{ volume }}"
+               volume: "{{ volume }}"
                ui : "on"
                target: "speaker"
          
