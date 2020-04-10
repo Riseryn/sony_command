@@ -220,7 +220,7 @@ If you also use the neuron for kodi, it is necessary to modify the "execute" met
 to modify the header.
 look for:
 
-def execute(self, method, *args, **kwargs):
+    def execute(self, method, *args, **kwargs):
         """Execute given method with given arguments."""
         headers = {
             'Content-Type': 'application/json',
@@ -229,7 +229,7 @@ def execute(self, method, *args, **kwargs):
          
 and change for:
 
-def execute(self, method, *args, **kwargs):
+    def execute(self, method, *args, **kwargs):
         """Execute given method with given arguments."""
         headers = {
             'Content-Type': 'application/json',
