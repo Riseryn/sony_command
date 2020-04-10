@@ -94,7 +94,9 @@ This synapses use the REST API
             - sony_command:
                type: "audio"
                method: "setAudioVolume"
-               params: '"volume": "{{ volume }}","ui" : "on","target" : "speaker"'
+           volume: "+{{ volume }}"
+           ui : "on"
+           target: "speaker"
          
 
     - name: "tv-mute-on"
