@@ -94,9 +94,9 @@ This synapses use the REST API
             - sony_command:
                type: "audio"
                method: "setAudioVolume"
-           volume: "+{{ volume }}"
-           ui : "on"
-           target: "speaker"
+               volume: "+{{ volume }}"
+               ui : "on"
+               target: "speaker"
          
 
     - name: "tv-mute-on"
@@ -215,3 +215,24 @@ to open an application, use the synapse
 __Attention__
 
 If you are not on the home page and you launch an application while another is running, you will have both applications open simultaneously which can cause a nice cacophony.
+# Known issue
+If you also use the neuron for kodi, it is necessary to modify the "execute" method of the "KodiJsonTransport" class usually in /usr/local/lib/python3.7/dist-packages/kodijson/kodijson.py
+to modify the header.
+look for:
+
+def execute(self, method, *args, **kwargs):
+        """Execute given method with given arguments."""
+        headers = {
+            'Content-Type': 'application/json',
+            'User-Agent': 'python-kodi',
+         }
+         
+and change for:
+
+def execute(self, method, *args, **kwargs):
+        """Execute given method with given arguments."""
+        headers = {
+            'Content-Type': 'application/json',
+            'User-Agent': 'python-kodi',
+            'X-Auth-PSK' : 'nora_tv_control_724'
+        }        
