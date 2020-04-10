@@ -17,7 +17,9 @@
       - sony_command:
            type: "audio"
            method: "setAudioVolume"
-           params: '"volume": "{{ volume }}","ui" : "on","target" : "speaker"'
+           volume: "{{ volume }}"
+           ui : "on"
+           target: "speaker"
 
   ############################################
   # increases the volume by a certain amount #
@@ -30,7 +32,9 @@
       - sony_command:
            type: "audio"
            method: "setAudioVolume"
-           params: '"volume": "+{{ volume }}","ui" : "on","target" : "speaker"'
+           volume: "+{{ volume }}"
+           ui : "on"
+           target: "speaker"
 
   ##########################################
   # lower the volume by a certain amount   #
@@ -43,7 +47,9 @@
       - sony_command:
            type: "audio"
            method: "setAudioVolume"
-           params: '"volume": "-{{ volume }}","ui" : "on","target" : "speaker"'
+           volume: "-{{ volume }}"
+           ui : "on"
+           target: "speaker"
 
   ################
   # Mute         #
